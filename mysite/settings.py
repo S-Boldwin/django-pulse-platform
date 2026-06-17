@@ -27,7 +27,6 @@ SECRET_KEY = config("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config("DEBUG", default=False, cast=bool)
 
-# 🎯 RESTORED SAFE FALLBACKS: Keeps local testing addresses active out of the box
 ALLOWED_HOSTS = config(
     "ALLOWED_HOSTS", 
     default="localhost,127.0.0.1", 
@@ -49,7 +48,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    "whitenoise.middleware.WhiteNoiseMiddleware",  # High-performance cloud asset server [1.5]
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -148,5 +147,5 @@ LOGOUT_REDIRECT_URL = "polls:index"
 
 LOGIN_URL = "login"
 
-# 🎯 RESTORED COMPATIBILITY FALLBACK: Standard field marker tracking strategy
+
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
