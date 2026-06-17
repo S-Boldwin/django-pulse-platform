@@ -1,0 +1,29 @@
+{% extends "polls/base.html" %}
+
+{% block title%}Polls - Questions{% endblock %}
+
+{%block content %}
+    <h1>Latest Questions</h1>
+    <p>{{ total_questions }} published question{{ total_questions|pluralize }}</p>
+    {% if all_tags %}
+        <strong>Browse by tag:</strong>
+        {% for tag in all_tags %}
+            <span>{{tag.name}}</span>
+        {% endfor %}
+    {% endif %}
+    {% if latest_question_list %}
+        <ul>
+            {% for question in latest_question_list %}
+                <li>
+                    <a href="{% url 'polls:detail' question.id %}">{{question.question_text|capfirst}}</a> 
+                    <small>{{question.pub_date|date:"d M Y"}}</small>
+                    {% for tag in question.tags.all %}
+                        <span>{{tag.name}}</span>
+                    {% endfor %}
+                    </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No polls are available.</p>
+    {% endif %}
+{% endblock %}

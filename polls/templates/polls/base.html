@@ -1,0 +1,40 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Polls App{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'polls/style.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="{% url 'polls:index' %}">Home</a>
+            
+            {% if user.is_authenticated %}
+                <a href="{% url 'polls:create_question' %}">Create Question</a>
+                <span>Welcome, {{ user.username }}</span>
+                
+                
+                <form method="post" action="{% url 'logout' %}" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit">Logout</button>
+                </form>
+            {% else %}
+                
+                <a href="{% url 'login' %}">Login</a>
+                <a href="{% url 'polls:register' %}">Register</a>
+            {% endif %}
+        </nav>
+    </header>
+    
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    
+    <footer>
+        <p>Polls App &copy; 2026</p>
+    </footer>
+</body>
+</html>

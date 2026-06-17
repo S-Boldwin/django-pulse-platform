@@ -1,0 +1,344 @@
+/* ==========================================================================
+   💎 Core System Reset & Variables
+   ========================================================================== */
+:root {
+    --primary: #0c4b33;       /* Deep Django Green */
+    --primary-light: #166e4b; /* Vibrant Micro-Interaction Green */
+    --accent: #eaf2ee;        /* Soft Tint Background Accent */
+    --text-main: #1e293b;     /* Slate Dark Text */
+    --text-muted: #64748b;    /* Elegant Subtitle Gray */
+    --bg-surface: #ffffff;    /* Pure Card White */
+    --bg-base: #f8fafc;       /* Minimalist Gray Canvas */
+    --border: #e2e8f0;        /* Subtle Partition Border */
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px;
+    background-color: var(--bg-base);
+    color: var(--text-main);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   🧱 Header Navigation Layout
+   ========================================================================== */
+header {
+    background-color: var(--bg-surface);
+    padding: 16px 24px;
+    margin-bottom: 40px;
+    border-radius: var(--radius-md);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border);
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+nav a {
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: var(--radius-sm);
+    transition: var(--transition);
+}
+
+nav a:hover {
+    background-color: var(--accent);
+    color: var(--primary);
+}
+
+nav span {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-left: auto;
+    font-weight: 500;
+}
+
+nav form {
+    margin: 0;
+    display: inline-flex;
+}
+
+nav button[type="submit"] {
+    background: none;
+    border: 1px solid var(--border);
+    color: #ef4444;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+nav button[type="submit"]:hover {
+    background-color: #fef2f2;
+    border-color: #fca5a5;
+}
+
+/* ==========================================================================
+   🏛️ Main Typography & Workspace Headings
+   ========================================================================== */
+h1 {
+    color: var(--primary);
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
+h1 + p {
+    color: var(--text-muted);
+    font-size: 15px;
+    margin-bottom: 32px;
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   🏷️ Clean Tag Browse Panel (Fixed Section)
+   ========================================================================== */
+main > strong, 
+main > strong + span,
+main > strong ~ span {
+    display: inline-flex;
+    margin-bottom: 24px;
+}
+
+main div:first-of-type {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 32px;
+    padding: 12px 16px;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+}
+
+main div:first-of-type strong {
+    font-size: 13px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+div span, li span {
+    display: inline-flex;
+    align-items: center;
+    background-color: var(--accent);
+    color: var(--primary);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 100px;
+    letter-spacing: 0.02em;
+}
+
+/* ==========================================================================
+   🗂️ Question Stream Lists & Cards
+   ========================================================================== */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+li {
+    padding: 24px;
+    background: var(--bg-surface);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+    border-color: #cbd5e1;
+}
+
+li a {
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    transition: var(--transition);
+}
+
+li a:hover {
+    color: var(--primary);
+}
+
+li small {
+    color: var(--text-muted);
+    font-size: 13px;
+    font-weight: 500;
+}
+
+li div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+}
+
+/* ==========================================================================
+   📥 Interactive Form Control Panels (Detail / Vote / Create)
+   ========================================================================== */
+fieldset {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 24px;
+    margin-bottom: 24px;
+    background-color: var(--bg-surface);
+}
+
+legend {
+    color: var(--text-main);
+    font-weight: 700;
+    font-size: 16px;
+    padding: 0 8px;
+    letter-spacing: -0.01em;
+}
+
+/* 🎯 FIXED SECTION: Cleaned typo on line below! */
+fieldset div {
+    display: flex;
+    align-items: center;      
+    justify-content: flex-start;
+    padding: 14px 16px;
+    margin: 8px 0;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    transition: var(--transition);
+    background-color: var(--bg-surface);
+}
+
+fieldset div:hover {
+    background-color: var(--accent);
+    border-color: var(--primary-light);
+}
+
+input[type="radio"] {
+    accent-color: var(--primary);
+    width: 18px;
+    height: 18px;
+    margin-right: 12px;
+    flex-shrink: 0;         
+}
+
+label {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-main);
+    cursor: pointer;
+    display: inline-block;
+    width: auto;             
+}
+
+input[type="submit"], button[type="button"], form > button, button {
+    background-color: var(--primary);
+    color: var(--bg-surface);
+    border: none;
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+input[type="submit"]:hover, form > button:hover, button:hover {
+    background-color: var(--primary-light);
+    transform: translateY(-1px);
+}
+
+/* Core Form Parameter Input Layout Overrides */
+form p input[type="text"], form p input[type="datetime-local"], select, textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-size: 15px;
+    margin-top: 4px;
+    margin-bottom: 12px;
+    box-sizing: border-box;
+}
+
+form p input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(12, 75, 51, 0.1);
+}
+
+/* Navigation & Action anchors placement links */
+main a {
+    display: inline-flex;
+    align-items: center;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 16px;
+    margin-right: 16px;
+    transition: var(--transition);
+}
+
+main a:hover {
+    color: var(--primary);
+}
+
+/* Specific styling parameters for update & delete actions layout */
+main a[href*="update"], main a[href*="delete"] {
+    border: 1px solid var(--border);
+    background-color: var(--bg-surface);
+    padding: 8px 16px;
+    border-radius: var(--radius-sm);
+    color: var(--text-main);
+}
+
+main a[href*="update"]:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+main a[href*="delete"]:hover {
+    border-color: #fca5a5;
+    color: #ef4444;
+    background-color: #fef2f2;
+}
+
+/* ==========================================================================
+   🗺️ Footer Component Shell
+   ========================================================================== */
+footer {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 13px;
+    font-weight: 500;
+    text-align: center;
+}

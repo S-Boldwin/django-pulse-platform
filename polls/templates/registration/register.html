@@ -1,0 +1,35 @@
+{% extends 'polls/base.html' %}
+{%  block title %}Register{% endblock %}
+{% block content %}
+    <h1>Create Account</h1>
+    <form method="post">
+        {% csrf_token %}
+
+        {% if form.errors %}
+            <div style="color: red; margin-bottom: 15px;">
+                Please fix the errors below.
+            </div>
+        {% endif %}
+        {% for field in form %}
+            <div style="margin-bottom: 15px;">
+                {{field.label_tag}}
+                {{field}}
+                {% if field.errors %}
+                    <p style="color: red;">{{field.errors}}</p>
+                {% endif %}
+                {% if field.help_text %}
+                <br>
+                    <small style="display: block; color: grey; font-size: 12px; max-width: 400px; ">
+                        {{field.help_text|safe}}
+                    </small>
+                {% endif %}
+            </div>
+        {% endfor %}
+        <button type="submit">Create Account</button>
+    </form>
+
+    <p style="margin-top: 20px;">
+        Already have an account?
+        <a href="{% url 'login' %}">Login here</a>
+    </p>
+{% endblock %}

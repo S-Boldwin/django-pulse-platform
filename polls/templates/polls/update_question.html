@@ -1,0 +1,27 @@
+{% extends "polls/base.html" %}
+{% block title %}Edit Question{% endblock %}
+{% block content %}
+    <h1>Edit Question</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+         <fieldset style="margin-top: 24px; margin-bottom: 24px; padding: 24px; border: 1px solid var(--border); border-radius: var(--radius-md); background-color: var(--bg-surface);">
+            <legend style="font-weight: bold; padding: 0 8px; color: var(--text-main);">Answer Choices</legend>
+            {{ choices.management_form }}
+            {% for choice_form in choices %}
+                <div style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
+                    {{ choice_form.id }} 
+                    <label style="width: auto; font-weight: 600;">Choice Text:</label>
+                    {{ choice_form.choice_text }}
+                    {% if choices.can_delete and choice_form.instance.pk %}
+                        <label style="color: #ef4444; font-weight: 600; margin-left: auto; display: inline-flex; align-items: center; gap: 4px;">
+                            {{ choice_form.DELETE }} Delete Option
+                        </label>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </fieldset>
+        <button type="submit">Save Changes</button>
+        <a href="{% url 'polls:detail' object.id %}">Cancel</a>
+    </form>
+{% endblock %}
